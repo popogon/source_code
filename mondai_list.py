@@ -1,4 +1,5 @@
-#coding=utf8
+# test.pyで使用する問題リスト
+# coding=utf8
 from random import randint #randomの中のrandintをimport
 import random #random全てをimport
 from time import sleep
