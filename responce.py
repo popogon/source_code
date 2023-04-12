@@ -1,3 +1,4 @@
+### 読み込み時間を計測し、データを作成するコード
 import datetime
 import json
 import os
@@ -29,9 +30,9 @@ def setting_driver() -> WebDriver:
     options.add_argument("--no-sandbox")
     options.add_argument("--start-maximized")
     options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36")
-    # chrome_service = fs.Service(executable_path="/usr/local/bin/chromedriver")
-    # driver = webdriver.Chrome(service=chrome_service, options=options)
-    executable_path=r'G:\マイドライブ\クローリング\chromedriver.exe'
+    
+    chrome_service = fs.Service(executable_path="/usr/local/bin/chromedriver")
+    driver = webdriver.Chrome(service=chrome_service, options=options)
     driver = webdriver.Chrome(executable_path=executable_path, options=options)
 
     driver.implicitly_wait(5)
@@ -70,7 +71,7 @@ def make_evaluation_data_list(driver: WebDriver, number_of_page: int, number_of_
     number_of_detected_url: int = len(detected_url)
     # アクセストータル時間 タイムスタンプの終わり - タイムスタンプの始まり
     loading_time = float(timestamp_url[number_of_detected_url - 1]) - float(timestamp_url[0])
-    # 推定入力時間（仮）
+    # 推定入力時間（一つのフォームに費やす時間を12.8秒と仮定）
     input_time: float = 6 + 12.8 * number_of_input_items
 
     evaluation_data_dict = {
