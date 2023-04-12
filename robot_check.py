@@ -1,8 +1,6 @@
-###クローリング可能かをDisallowで判断
+###クローリング可否を判断
 
 from time import sleep
-
-
 
 from urllib.parse import urljoin
 from urllib.request import Request, urlopen
@@ -43,7 +41,7 @@ def is_crawling_allowed(url):
                 allowed = True
     return True
 
-
+# 確認するサイト名とurlを辞書形式で入れる
 urls = {'Amazon':'https://www.amazon.co.jp',
         
         
