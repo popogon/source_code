@@ -1,5 +1,5 @@
-#ヤフーショッピングの自分の注文履歴から情報を取得します
-
+# ヤフーショッピングの自分の注文履歴から情報を取得します
+# 古いコードなので動かないかもしれません
 from time import sleep
 from turtle import onclick
 from bs4 import BeautifulSoup
@@ -7,9 +7,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import re
 
+# chromedriverのパス
 chrome_pass = r''
 
-def crawl():
+def purchase_history():
     options = Options()
     options.add_argument("--incognito")
     crawl_list = []
@@ -96,6 +97,6 @@ def crawl():
         driver.quit()
         print("chromedriverを閉じました")
 
-crawl()
+purchase_history()
 
 
